@@ -7,9 +7,14 @@ import {Header} from "./components/pages/Header"
 
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
+<<<<<<< HEAD
+import {Home} from "./components/pages/Home";
+import {Pc} from "./components/pages/Pc";
+=======
 import UserProfile from "./components/pages/UserProfile";
 
 
+>>>>>>> e98bfdb3e6044da17038a7a56e701d904b9f4e1d
 
 function App() {
   //state
@@ -17,10 +22,10 @@ function App() {
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
 
 
-  //functional
+ 
 
 
-  //JSX
+  
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -39,27 +44,30 @@ function App() {
 
   return (
     <Router>
-      {/* Start component header */}
       <Header /> 
+      
       <Switch>      
-        {/* Start component main */}
+        
 
 
         <Route path="/login">
             <Login loginCallback={userLogin} />
-          </Route>
+        </Route>
 
-          <Route path="/signup">
+        <Route path="/signup">
             <Signup loginCallback={userLogin} />
-          </Route>
+        </Route>
 
-          <Route exact path="/">
-            {/* <Home /> */}
-          </Route>
+        <Route exact path="/">
+            <Home />
+        </Route>
 
         {/* Start component footer */}
-
+        <Route path="/pc">
+            <Pc />
+        </Route>
       </Switch>
+    
     </Router>
       
     

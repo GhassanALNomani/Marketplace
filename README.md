@@ -2,6 +2,7 @@
 A public sale website which developed as a second version of (Link ) to become more professional and contain more enhancement.
 
 ## Description
+
 It is the service of the products for designers, owners or those have product to sell it. Registration for the site is for users who display their products. Each user has a special profile in which he can add his products, modify or delete them in addition to modifying his data. The home page of the site is displayed on the products offered by the visitor and communicates with the owner of the product through the contact numbers of the owner.
 
 ## Technical Used
@@ -14,6 +15,7 @@ It is the service of the products for designers, owners or those have product to
 
 
 ### Wireframes
+
 ![Home](https://git.generalassemb.ly/Team-Seven/Marketplace/blob/master/images/Home%20Page.png)
 
 ## Planning and Development Process

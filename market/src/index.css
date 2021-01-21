@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*{
+  box-sizing: border-box;
+}
+
+/* Start Header */
+
+.header{
+  /* background-image: url(); */
+  background-color: #2C3A47;
+  color: white; /* will change for test*/
+  display: flex;
+  min-height: 500px;
+  
+}
+.header .container-nave-logo{
+  display: flex;
+  /* max-width: 800px; */
+  
+}
+
+.header .logo {
+  font-size: 3.5vh;
+}
+
+.header .nav{
+  display: flex;
+}
+
+.header .nav ul li{
+  list-style: none;
+}
+
+.header .nav ul li .link{
+  color: white;
+  text-decoration: none
+}
+
+/* End Header */

@@ -19,11 +19,14 @@ export const Nav = () => {
                    
             </div>
             <div className="nav-right">
+
                 
                 <Link  className="link" to="signin">Sign In</Link>
                     
                 <Link  className="link" to="signup">Sign Up</Link>
                     
+
+
             </div>
         </nav>
     )

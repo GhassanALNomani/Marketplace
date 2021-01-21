@@ -7,6 +7,7 @@ import {Header} from "./components/pages/Header"
 
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
+import UserProfile from "./components/pages/UserProfile";
 
 
 

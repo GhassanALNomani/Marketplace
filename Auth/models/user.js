@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    product: Array,
+    products: Array,
     cart:Array
 
 }, { timestamps: true })

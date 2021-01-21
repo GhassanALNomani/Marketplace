@@ -3,18 +3,18 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import {Header} from "./components/pages/Header"
-
+import {Header} from './components/pages/Header'
+import { Button ,Carousel} from 'react-bootstrap';
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
-<<<<<<< HEAD
+import {Nave} from "./components/pages/Nave"
 import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
-=======
+
 import UserProfile from "./components/pages/UserProfile";
 
 
->>>>>>> e98bfdb3e6044da17038a7a56e701d904b9f4e1d
+
 
 function App() {
   //state
@@ -43,13 +43,12 @@ function App() {
   useEffect(userLogin, []);
 
   return (
+    <>
+    
     <Router>
-      <Header /> 
-      
+      <Header/>
+      <Nave isLoggedIn={auth.isLoggedIn} loginCallback={userLogin}/>
       <Switch>      
-        
-
-
         <Route path="/login">
             <Login loginCallback={userLogin} />
         </Route>
@@ -69,7 +68,7 @@ function App() {
       </Switch>
     
     </Router>
-      
+    </>
     
   );
 }

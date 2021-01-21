@@ -31,7 +31,7 @@ export const Nav = () => {
             <div className="nav-right">
             <ul>
                 <li>
-                    <Link to="signin">Sign In</Link>
+                    <Link to="login">Login</Link>
                 </li>
                 <li>
                     <Link to="signup">Sign Up</Link>

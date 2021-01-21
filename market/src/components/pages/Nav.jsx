@@ -1,42 +1,29 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import {  } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 
 export const Nav = () => {
     return (
-        <nav className="nav">
+        <nav class="nav">
             <div className="nav-left">
-                <ul>
-                    <li>
-                        <Link className="link" to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link className="link" to="blog">Blog</Link>
-                    </li>
-                    <li>
-                        <Link className="link" to="shop">Shop</Link>
-                    </li>
-                    <li>
-                        <select>
-                            <option>all categories</option>
-                            <option>clothing</option>
-                            <option>electronics</option>
-                            <option>books</option>
-                        </select>
-                    </li>
-                </ul>
+                
+                <Link className="link" to="/">Home</Link>
+                
+                <Link  className="link" to="blog">Blog</Link>
+                   
+                <Link  className="link" to="shop">Shop</Link>
+                    
+                
+                   
             </div>
             <div className="nav-right">
-            <ul>
-                <li>
-                    <Link to="signin">Sign In</Link>
-                </li>
-                <li>
-                    <Link to="signup">Sign Up</Link>
-                </li>
-            </ul>
+                
+                <Link  className="link" to="signin">Sign In</Link>
+                    
+                <Link  className="link" to="signup">Sign Up</Link>
+                    
             </div>
         </nav>
     )

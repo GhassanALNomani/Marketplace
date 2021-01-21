@@ -15,6 +15,7 @@ function App() {
 
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
 
+
   //functional
 
 

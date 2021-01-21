@@ -15,7 +15,7 @@ It is the service of the products for designers, owners or those have product to
 
 ### Wireframes
 ![Home](https://git.generalassemb.ly/Team-Seven/Marketplace/blob/master/images/Home%20Page.png)
-<img src="/images/SignUp.png">
-<img src="/images/SignIn.png">
+<img src="/images/SignUp.png" width="800px">
+<img src="/images/SignIn.png" width="800px">
 
 ## Planning and Development Process

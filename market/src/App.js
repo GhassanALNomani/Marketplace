@@ -7,8 +7,14 @@ import {Header} from "./components/pages/Header"
 
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
+<<<<<<< HEAD
 import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
+=======
+import UserProfile from "./components/pages/UserProfile";
+
+
+>>>>>>> e98bfdb3e6044da17038a7a56e701d904b9f4e1d
 
 function App() {
   //state

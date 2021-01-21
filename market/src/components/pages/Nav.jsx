@@ -21,7 +21,7 @@ export const Nav = () => {
             <div className="nav-right">
 
                 
-                <Link  className="link" to="signin">Sign In</Link>
+                <Link  className="link" to="login">Login</Link>
                     
                 <Link  className="link" to="signup">Sign Up</Link>
                     

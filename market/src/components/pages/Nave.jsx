@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import { Navbar,Nav, Form, FormControl, Button } from 'react-bootstrap';
 import {Header} from './Header'
-
+import {Theme} from './Theme'
 
 export const Nave = (props) => {
 
@@ -53,6 +53,7 @@ export const Nave = (props) => {
                 </Nav>
                         
             </Navbar>
+            <Theme />
         </>
     )
 }

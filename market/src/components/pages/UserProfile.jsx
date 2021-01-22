@@ -1,9 +1,9 @@
-// import React, { useEffect, useState } from "react";
-// import { Container, Row } from "react-bootstrap";
-// import { Route, Redirect } from "react-router-dom";
-// import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { Route, Redirect } from "react-router-dom";
+import axios from 'axios'
 
-// export default function UserProfile(props) {
+export default function UserProfile(props) {
 //   const [alluserProduct, setAluserProduct] = useState([])
 //   const { name, email, favoriteProduct, _id } = props.auth.currentUser;
 //   console.log(favoriteProduct)
@@ -30,16 +30,21 @@
 
 //   }
 
-//   // const allfavoriteProducts = alluserProduct.map(product => <OneProduct deleteProduct={deleteProduct} product={product} delete={true} />)
-//   return <> <h1> name :{name} </h1>
-//     <h1> email : {email} </h1>
-//     <h1> favorite Products  : </h1>
+  // const allfavoriteProducts = alluserProduct.map(product => <OneProduct deleteProduct={deleteProduct} product={product} delete={true} />)
+  return(
+            <>  
+            <h1>All Favorite Products</h1>
+                <Container>
+                    <Row>
+                        <Col>
+                            <img src="https://t3.ftcdn.net/jpg/03/23/88/08/360_F_323880864_TPsH5ropjEBo1ViILJmcFHJqsBzorxUB.jpg" />
+                        </Col>
 
-//     <Container>
-//       <Row >
-//         {allfavoriteProducts}
-//       </Row>
-
-//     </Container>
-//   </>
-// }
+                        <Col>
+                            info
+                        </Col>
+                    </Row>
+                </Container>
+            </>
+  )
+}

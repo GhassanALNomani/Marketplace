@@ -10,7 +10,7 @@ import Signup from "./components/pages/Signup";
 import {Nave} from "./components/pages/Nave"
 import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
-
+import AuthRoute from "./components/pages/AuthRoute"
 import UserProfile from "./components/pages/UserProfile";
 
 
@@ -48,7 +48,12 @@ function App() {
     <Router>
       <Header/>
       <Nave isLoggedIn={auth.isLoggedIn} loginCallback={userLogin}/>
-      <Switch>      
+      <Switch>
+        <Route path="/profile">
+            <AuthRoute 
+              setAuth = {setAuth}
+            auth={auth} />
+        </Route>      
         <Route path="/login">
             <Login loginCallback={userLogin} />
         </Route>
@@ -65,6 +70,7 @@ function App() {
         <Route path="/pc">
             <Pc />
         </Route>
+        
       </Switch>
     
     </Router>

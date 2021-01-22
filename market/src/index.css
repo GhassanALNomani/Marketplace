@@ -22,31 +22,128 @@ code {
   /* background-image: url(); */
   background-color: #2C3A47;
   color: white; /* will change for test*/
-  display: flex;
   min-height: 500px;
-  
+  padding-top: 20px;
+}
+.nav{
+  /* border: 2px solid black; */
+  /* padding-right: 350pxs */
+  padding-top: 42px;
+  font-size: 2vh;
 }
 .header .container-nave-logo{
   display: flex;
-  /* max-width: 800px; */
-  
+  justify-content: space-evenly;
+  width: 1300px;
+  margin: 0 auto
 }
 
 .header .logo {
   font-size: 3.5vh;
+  /* border: 2px solid black;  */
 }
 
-.header .nav{
-  display: flex;
+
+.nav .nav-left,
+.nav .nav-right{
+  display: inline-block
 }
 
-.header .nav ul li{
-  list-style: none;
+.nav .nav-left{
+  padding-right: 90px;
 }
 
-.header .nav ul li .link{
-  color: white;
-  text-decoration: none
+
+.header .nav .link{
+  text-decoration: none;
+  color: #fff;
+  padding: 0 20px;
+  border-right: 1px solid white;
 }
 
+.header .nav .link:last-of-type{
+  border-right: 0;
+}
+
+.header .container-nave-logo:last-of-type{
+  padding-top: 100px;
+}
+
+.header .container-nave-logo:last-of-type h1{
+  /* border-bottom: 2px solid white;
+  border-top: 2px solid white; */
+  padding: 50px 0;
+  text-align: center;
+  
+}
+.header .container-nave-logo:last-of-type .border{
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+  width: 342px
+}
 /* End Header */
+.style-nav{
+  font-size: 2.5vh;
+}
+.style-nav p{
+  color: #9AECDB
+}
+.style-nav:hover{
+  font-weight: bold;
+  text-shadow: 8px 8px 8px black;
+  cursor: pointer;
+}
+.continaer-img{
+  height: 600px;
+}
+.colorlink{
+  color:#fff;
+}
+.colorlink:hover{
+  text-decoration: none;
+  color: #EAB543;
+  font-weight: bold;
+  cursor: pointer;
+}
+.butt Button{
+  backgroundColor: "transparent";
+  border: "0";
+  color: "#9AECDB"
+}
+
+/* Start Theme style*/
+.dark-theme{
+  background-color: #1f1b24;
+  color: #f8f8f8;
+  cursor: pointer;
+}
+
+/* .dark-theme nav {
+  background-color: #332940;
+} */
+
+.dark-theme code {
+  color: red;
+}
+/*End Theme style */
+
+
+
+
+
+/* Start Profile */
+.left-side{
+  
+  /* height: 300px */
+}
+
+
+.img{
+  /* border: 1px solid black; */
+  border-radius: 50%
+}
+.info-user{
+  padding-top: 15px
+  
+}
+/* End Profile */

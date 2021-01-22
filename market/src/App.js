@@ -12,7 +12,7 @@ import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
 import AuthRoute from "./components/pages/AuthRoute"
 import UserProfile from "./components/pages/UserProfile";
-
+import {Product} from "./components/pages/Product"
 
 
 
@@ -70,7 +70,9 @@ function App() {
         <Route path="/pc">
             <Pc />
         </Route>
-        
+        <Route path="/product">
+            <Product />
+        </Route>
       </Switch>
     
     </Router>

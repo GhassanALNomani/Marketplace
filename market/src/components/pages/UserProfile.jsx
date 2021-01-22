@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col,Button,Card } from "react-bootstrap";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Link } from "react-router-dom";
 import axios from 'axios'
 
 export default function UserProfile(props) {
@@ -47,7 +47,7 @@ export default function UserProfile(props) {
                                     <h2>Ghassan</h2> {/*name here nawer */}
                                 </div>
                                 <Button style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorlink">
-                                    Add Product
+                                    <Link to="/product">Add Product</Link>
                                 </Button>
                             </div>
                         </Col>

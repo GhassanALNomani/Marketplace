@@ -126,3 +126,24 @@ code {
   color: red;
 }
 /*End Theme style */
+
+
+
+
+
+/* Start Profile */
+.left-side{
+  
+  /* height: 300px */
+}
+
+
+.img{
+  /* border: 1px solid black; */
+  border-radius: 50%
+}
+.info-user{
+  padding-top: 15px
+  
+}
+/* End Profile */

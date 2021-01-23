@@ -28,7 +28,7 @@ export default function Login(props) {
                 if (token) {
                     localStorage.setItem("jwtToken", token);
                     props.loginCallback();
-                    history.push("/"); // /home
+                    history.push("/profile"); // /profile
                 } else {
                     console.log("Login error: ", msg);
                 }

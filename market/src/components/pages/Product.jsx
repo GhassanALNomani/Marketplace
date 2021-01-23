@@ -69,7 +69,7 @@ export const Product = () => {
                     </Form.Row>
 
 
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorbutt colorlink">
                         Add To Shop
                     </Button>
                 </Form>

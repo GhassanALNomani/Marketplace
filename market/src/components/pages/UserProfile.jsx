@@ -4,6 +4,7 @@ import { Route, Redirect, Link } from "react-router-dom";
 import axios from 'axios'
 
 export default function UserProfile(props) {
+    const { name } = props.auth.currentUser;
 //   const [alluserProduct, setAluserProduct] = useState([])
 //   const { name, email, favoriteProduct, _id } = props.auth.currentUser;
 //   console.log(favoriteProduct)
@@ -44,7 +45,7 @@ export default function UserProfile(props) {
                                     <img className="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUrrrKLWMi_q3pHEePQ6tU2SR8KFm4A0ntA&usqp=CAU" alt="" />  
                                 </div>
                                 <div className="info-user">
-                                    <h2>Ghassan</h2> {/*name here nawer */}
+                                    <h2>{name}</h2>
                                 </div>
                                 <Button style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorlink">
                                     <Link to="/product">Add Product</Link>
@@ -57,7 +58,7 @@ export default function UserProfile(props) {
                                 <Card style={{ width: '18rem' }}>
                                     <Card.Img variant="top" src="holder.js/100px180" /> {/*here img product nawer */}
                                     <Card.Body>
-                                        <Card.Title>Card Title</Card.Title> {/*here name product nawer */}
+                                        <Card.Title>{}</Card.Title> {/*here name product nawer */}
                                         <Card.Text> {/*Descriptions product */}
                                         Some quick example text to build on the card title and make up the bulk of
                                         the card's content.

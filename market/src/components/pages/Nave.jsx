@@ -23,7 +23,7 @@ export const Nave = (props) => {
         <>  
             
             <Navbar bg="dark" variant="dark" className="butt">
-                <Navbar.Brand as={Link} className="style-nav" to="/Home">
+                <Navbar.Brand as={Link} className="style-nav" to="/">
                     <p>Home</p>
                 </Navbar.Brand>
                 <Nav className="mr-auto">

@@ -13,8 +13,8 @@ import {Pc} from "./components/pages/Pc";
 import AuthRoute from "./components/pages/AuthRoute"
 import UserProfile from "./components/pages/UserProfile";
 import {Product} from "./components/pages/Product"
-
-
+import Xbox from "./components/pages/Xbox"
+import {Playstions} from "./components/pages/Playstions"
 
 function App() {
   //state
@@ -69,6 +69,12 @@ function App() {
         {/* Start component footer */}
         <Route path="/pc">
             <Pc />
+        </Route>
+        <Route path="/xbox">
+            <Xbox />
+        </Route>
+        <Route path="/playstions">
+            <Playstions />
         </Route>
         <Route path="/product">
             <Product />

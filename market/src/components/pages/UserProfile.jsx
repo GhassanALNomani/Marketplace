@@ -6,8 +6,8 @@ import axios from 'axios'
 export default function UserProfile(props) {
     const { name } = props.auth.currentUser;
 //   const [alluserProduct, setAluserProduct] = useState([])
-//   const { name, email, favoriteProduct, _id } = props.auth.currentUser;
-//   console.log(favoriteProduct)
+//   const { name, email, cart, _id } = props.auth.currentUser;
+
 //   useEffect(() => {
 //     axios.get('https://sei12.herokuapp.com/movei/json')
 //       .then(data => {
@@ -49,6 +49,9 @@ export default function UserProfile(props) {
                                 </div>
                                 <Button style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorlink">
                                     <Link to="/product">Add Product</Link>
+                                </Button>
+                                <Button as={Link} to="/reset" style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorlink">
+                                    Change Password
                                 </Button>
                             </div>
                         </Col>

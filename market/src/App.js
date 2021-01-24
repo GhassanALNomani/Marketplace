@@ -12,6 +12,7 @@ import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
 import AuthRoute from "./components/pages/AuthRoute"
 import UserProfile from "./components/pages/UserProfile";
+import Reset from "./components/pages/Reset"
 import {Product} from "./components/pages/Product"
 import Xbox from "./components/pages/Xbox"
 import {Playstions} from "./components/pages/Playstions"
@@ -60,9 +61,15 @@ function App() {
             <AuthRoute 
               setAuth = {setAuth}
             auth={auth} />
-        </Route>      
+        </Route>
+           
         <Route path="/login">
             <Login loginCallback={userLogin} />
+        </Route>
+        
+        <Route path="/reset">
+            <Reset
+              user={auth.currentUser} />
         </Route>
 
         <Route path="/signup">
@@ -77,6 +84,7 @@ function App() {
         <Route path="/pc">
             <Pc />
         </Route>
+
         <Route path="/xbox">
             <Xbox />
         </Route>
@@ -86,6 +94,10 @@ function App() {
         <Route path="/product">
             <Product product={product} setProduct={setProduct}/>
         </Route>
+
+        <Route path="*">
+            <h1>Page not Found</h1>
+          </Route>
       </Switch>
       <Footer />
     </Router>

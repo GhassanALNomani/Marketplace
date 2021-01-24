@@ -24,12 +24,12 @@ function App() {
   const [product , setProduct] = useState([])
 
  
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/product")
-    .then(response =>{
-      setProduct(response)
-    })
-  },[])
+  // useEffect(() => {
+  //   axios.get("http://localhost:5000/api/product")
+  //   .then(response =>{
+  //     setProduct(response)
+  //   })
+  // },[])
 
   
 

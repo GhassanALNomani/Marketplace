@@ -7,7 +7,7 @@ import { Container, Row, Col,Button,Card,Form } from "react-bootstrap";
 
 
 
-export const Product = () => {
+export const Product = ({product}) => {
 
 
 

@@ -12,6 +12,8 @@ import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
 import AuthRoute from "./components/pages/AuthRoute"
 import UserProfile from "./components/pages/UserProfile";
+import Reset from "./components/pages/Reset";
+// import AddPro from "./components/pages/AddPro"
 
 
 
@@ -53,9 +55,15 @@ function App() {
             <AuthRoute 
               setAuth = {setAuth}
             auth={auth} />
-        </Route>      
+        </Route>
+           
         <Route path="/login">
             <Login loginCallback={userLogin} />
+        </Route>
+        
+        <Route path="/reset">
+            <Reset
+              user={auth.currentUser} />
         </Route>
 
         <Route path="/signup">
@@ -71,6 +79,10 @@ function App() {
             <Pc />
         </Route>
         
+        <Route path="*">
+            <h1>Page not Found</h1>
+          </Route>
+
       </Switch>
     
     </Router>

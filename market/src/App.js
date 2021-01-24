@@ -12,20 +12,26 @@ import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
 import AuthRoute from "./components/pages/AuthRoute"
 import UserProfile from "./components/pages/UserProfile";
-import Reset from "./components/pages/Reset";
-// import AddPro from "./components/pages/AddPro"
-
-
-
-
+import Reset from "./components/pages/Reset"
+import {Product} from "./components/pages/Product"
+import Xbox from "./components/pages/Xbox"
+import {Playstions} from "./components/pages/Playstions"
+import Footer from "./components/pages/Footer"
+import axios from "axios"
 function App() {
   //state
 
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
+  const [product , setProduct] = useState([])
 
-
- 
-
+ // call products 
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/product")
+    .then(response =>{
+      setProduct(response)
+    })
+    .catch((err) => console.log(err))
+  },[])
 
   
 
@@ -78,13 +84,22 @@ function App() {
         <Route path="/pc">
             <Pc />
         </Route>
-        
+
+        <Route path="/xbox">
+            <Xbox />
+        </Route>
+        <Route path="/playstions">
+            <Playstions />
+        </Route>
+        <Route path="/product">
+            <Product product={product} setProduct={setProduct}/>
+        </Route>
+
         <Route path="*">
             <h1>Page not Found</h1>
           </Route>
-
       </Switch>
-    
+      <Footer />
     </Router>
     </>
     

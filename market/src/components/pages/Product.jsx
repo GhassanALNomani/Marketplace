@@ -1,0 +1,88 @@
+import React from 'react'
+import { Container, Row, Col,Button,Card,Form } from "react-bootstrap";
+import axios from "axios"
+
+
+
+
+
+
+export const Product = ({product, setProduct}) => {
+
+    // const allProduct = product.map(elem =>{
+    //     return elem.user.products
+    // })
+    // console.log(allProduct)
+
+
+
+    const handleAddtoShop = () =>{
+        axios.post("http://localhost:5000/api/product/")
+        .then(response =>{
+            setProduct(response.products)
+            console.log(response)
+        })
+    }
+
+    return (
+            <Container>
+                <Form>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="text" placeholder="Name Product" />
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>Image</Form.Label>
+                        <Form.Control type="file"/>
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Group controlId="formGridAddress1">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control placeholder="Description" />
+                    </Form.Group>
+
+                    <Form.Group controlId="formGridAddress2">
+                        <Form.Label>Features</Form.Label>
+                        <Form.Control placeholder="Features" />
+                    </Form.Group>
+
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridCity">
+                        <Form.Label>Price</Form.Label>
+                        <Form.Control />
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>Category</Form.Label>
+                        <Form.Control as="select" defaultValue="Choose...">
+                            <option>pc</option>
+                            <option>playstions</option>
+                            <option>xbox</option>
+                        </Form.Control>
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>Type</Form.Label>
+                        <Form.Control as="select" defaultValue="Choose...">
+                            <option>devices</option>
+                            <option>games</option>
+                        </Form.Control>
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridZip">
+                        <Form.Label>Company</Form.Label>
+                        <Form.Control />
+                        </Form.Group>
+                    </Form.Row>
+
+
+                    <Button onClick={handleAddtoShop} variant="primary" type="submit" style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorbutt colorlink">
+                        Add To Shop
+                    </Button>
+                </Form>
+            </Container>
+    )
+}

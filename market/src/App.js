@@ -12,11 +12,13 @@ import {Home} from "./components/pages/Home";
 import {Pc} from "./components/pages/Pc";
 import AuthRoute from "./components/pages/AuthRoute"
 import UserProfile from "./components/pages/UserProfile";
+import Reset from "./components/pages/Reset"
 import {Product} from "./components/pages/Product"
 import Xbox from "./components/pages/Xbox"
 import {Playstions} from "./components/pages/Playstions"
 import Footer from "./components/pages/Footer"
 import axios from "axios"
+import Platforms from "./components/pages/Platforms"
 function App() {
   //state
 
@@ -27,13 +29,14 @@ function App() {
   useEffect(() => {
     axios.get("http://localhost:5000/api/product")
     .then(response =>{
-      setProduct(response)
+      setProduct(response.data.result)
+      console.log("product", product)
     })
     .catch((err) => console.log(err))
   },[])
 
+  console.log("product", product);
   
-
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -59,10 +62,17 @@ function App() {
         <Route path="/profile">
             <AuthRoute 
               setAuth = {setAuth}
-            auth={auth} />
-        </Route>      
+            auth={auth}
+            product={product} />
+        </Route>
+           
         <Route path="/login">
             <Login loginCallback={userLogin} />
+        </Route>
+        
+        <Route path="/reset">
+            <Reset
+              user={auth.currentUser} />
         </Route>
 
         <Route path="/signup">
@@ -70,22 +80,32 @@ function App() {
         </Route>
 
         <Route exact path="/">
-            <Home />
+            <Home product={product} />
         </Route>
 
         {/* Start component footer */}
-        <Route path="/pc">
-            <Pc />
-        </Route>
-        <Route path="/xbox">
-            <Xbox />
-        </Route>
-        <Route path="/playstions">
-            <Playstions />
-        </Route>
+        {/* <Route path="/pc">
+            <Pc product={product}/>
+        </Route> */}
+
+        {/* <Route path="/xbox">
+            <Xbox product={product}/>
+        </Route> */}
+        {/* <Route path="/playstions">
+            <Playstions product={product}/>
+        </Route> */}
         <Route path="/product">
             <Product product={product} setProduct={setProduct} user={auth.currentUser}/>
         </Route>
+
+        {["xbox", "playstions", "pc"].map(ele => {
+         return <Route path={`/${ele}`}>
+          <Platforms type={ele} product={product}/>
+      </Route>
+        })}
+        <Route path="*">
+            <h1>Page not Found</h1>
+          </Route>
       </Switch>
       <Footer />
     </Router>

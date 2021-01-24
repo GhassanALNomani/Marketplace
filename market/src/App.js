@@ -23,13 +23,14 @@ function App() {
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [product , setProduct] = useState([])
 
- 
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/api/product")
-  //   .then(response =>{
-  //     setProduct(response)
-  //   })
-  // },[])
+ // call products 
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/product")
+    .then(response =>{
+      setProduct(response)
+    })
+    .catch((err) => console.log(err))
+  },[])
 
   
 
@@ -83,7 +84,7 @@ function App() {
             <Playstions />
         </Route>
         <Route path="/product">
-            <Product product={product}/>
+            <Product product={product} setProduct={setProduct}/>
         </Route>
       </Switch>
       <Footer />

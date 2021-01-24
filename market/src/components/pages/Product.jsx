@@ -1,18 +1,28 @@
 import React from 'react'
 import { Container, Row, Col,Button,Card,Form } from "react-bootstrap";
+import axios from "axios"
 
 
 
 
 
 
+export const Product = ({product, setProduct}) => {
 
-export const Product = ({product}) => {
+    // const allProduct = product.map(elem =>{
+    //     return elem.user.products
+    // })
+    // console.log(allProduct)
 
 
 
-
-
+    const handleAddtoShop = () =>{
+        axios.post("http://localhost:5000/api/product/")
+        .then(response =>{
+            setProduct(response.products)
+            console.log(response)
+        })
+    }
 
     return (
             <Container>
@@ -69,7 +79,7 @@ export const Product = ({product}) => {
                     </Form.Row>
 
 
-                    <Button variant="primary" type="submit" style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorbutt colorlink">
+                    <Button onClick={handleAddtoShop} variant="primary" type="submit" style={{backgroundColor: "#2C3A47",fontSize: "2.5vh",border: "0",borderRadius: "15px"}} className="colorbutt colorlink">
                         Add To Shop
                     </Button>
                 </Form>

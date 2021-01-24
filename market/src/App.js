@@ -15,7 +15,7 @@ import UserProfile from "./components/pages/UserProfile";
 import {Product} from "./components/pages/Product"
 import Xbox from "./components/pages/Xbox"
 import {Playstions} from "./components/pages/Playstions"
-
+import Footer from "./components/pages/Footer"
 function App() {
   //state
 
@@ -80,7 +80,7 @@ function App() {
             <Product />
         </Route>
       </Switch>
-    
+      <Footer />
     </Router>
     </>
     

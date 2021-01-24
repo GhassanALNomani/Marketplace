@@ -7,15 +7,11 @@ import {Theme} from './Theme'
 export const Nave = (props) => {
 
 
-
-
-
     //functional
     const handleLogout = () =>{
         localStorage.removeItem("jwtToken");
         props.loginCallback();
     }
-
 
 
     //JSX
@@ -46,7 +42,7 @@ export const Nave = (props) => {
                     </>:  <> <Nav.Link as={Link} className="style-nav" to="/profile">
                         <p>Profile</p>
                     </Nav.Link>
-                    <Nav.Link as={Link} className="style-nav" onClick={handleLogout}>
+                    <Nav.Link as={Link} to="/" className="style-nav" onClick={handleLogout}>
                         <p>Logout</p>
                     </Nav.Link> </> }
          

@@ -21,9 +21,9 @@ export const Theme = () => {
     //JSX
     return (
         <div className={darkTheme ? "dark-theme" : "light-theme"}>
-            <buttom onClick={handleToggleTheme}>
+            <button onClick={handleToggleTheme}>
                 {darkTheme ? "Dark Mode" : "Light Mode"}
-            </buttom>
+            </button>
         </div>
     )
 }

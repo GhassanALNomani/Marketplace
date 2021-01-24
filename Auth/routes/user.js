@@ -80,4 +80,31 @@ router.get("/:token", (req, res) => {
     });
 });
 
+router.post('/reset', (req, res) => {
+
+    User.findOne({ email: req.body.email }, function (err, foundUser) {
+        password = req.body.password; // req.body
+        console.log(foundUser);
+        bcrypt.genSalt((err, salt) => {
+            // changes every time
+            console.log("bcrypt salt:", salt);
+            bcrypt.hash(password, salt, (err, passwordHash) => {
+                console.log("password:", password);
+                console.log("passwordHash:", passwordHash);
+                User.updateOne({ email: req.body.email }, { password: passwordHash }, (err, newUser) => {
+
+                    // res.redirect("/profile");
+                    res.json({ msg: " password changed " });
+                });
+            });
+        });
+        if (!foundUser) {
+            console.log('No user with email ' + req.body.email);
+        }
+
+    })
+
+})
+
+
 module.exports = router;

@@ -3,11 +3,25 @@ const router = express.Router();
 const Product = require("../models/products")
 const User = require("../models/user");
 
+<<<<<<< HEAD
 // router.post("/" , (req, res) => {
 //     let userId = req.body.userId;
 //     console.log(userId)
 //     User.findById(userId)
 //         .then(user=>{
+=======
+router.get("/", (req, res) =>{
+    Product.find().then(result=>{
+        res.json({result})
+    })
+  })
+
+router.post("/" , (req, res) => {
+    let userId = req.body.userId;
+    console.log(userId)
+    User.findById(userId)
+        .then(user=>{
+>>>>>>> 1c8f62e6ca6a5eccddac681a15884dd30c534bd0
             
 //         })
 //         .catch(err=>res.json({msg: err}));

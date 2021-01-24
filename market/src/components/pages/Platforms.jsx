@@ -1,28 +1,26 @@
 import React from 'react'
 import { Container, Row, Col,Button,Card } from "react-bootstrap";
-import {useState} from "react"
+import {useState} from "react";
 
-
-
-
-
-export const Playstions = (props) => {
+export default function Platforms(props) {
     //State
     const [filter, setFilter] = useState("All")
 
 
-
-
+    
+    
 
     //Functional
     const onChangehandler = (e) =>{
         setFilter(e.target.value)
     }
-
-    let allProduct;
+                                                                    //pc,xbox....
+    let allProductByXbox = props.product.filter(ele => ele.category === props.type);
+    console.log(allProductByXbox);
+       
 
     if(filter === "All"){
-        allProduct = props.product.map(product=>{
+        allProductByXbox = allProductByXbox.map(product=>{
             return (
                 <div className="style-card-shop">
                         <Card style={{ width: '18rem' }}>
@@ -39,7 +37,7 @@ export const Playstions = (props) => {
             )
         })
     }else{
-        allProduct = props.product.map(product =>{
+        allProductByXbox = allProductByXbox.map(product =>{
             if(product.type === filter) return(
                 <div className="style-card-shop">
                         <Card style={{ width: '18rem' }}>
@@ -75,9 +73,10 @@ export const Playstions = (props) => {
                     </div>
                </Row>
                <Row>
-                   {allProduct}
+                   {allProductByXbox}
                </Row>
            </Container>
         </>
     )
 }
+

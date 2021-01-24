@@ -26,10 +26,9 @@ export const Nave = (props) => {
                     <Nav.Link as={Link} className="style-nav" to="/blog">
                         <p>Blog</p>
                     </Nav.Link>
-                    <Nav.Link as={Link} className="style-nav" to="/shop">
+                    <Nav.Link as={Link} className="style-nav" to="/">
                         <p>Shop</p>
                     </Nav.Link>
-
 
 
                     {!props.isLoggedIn ? <>

@@ -3,6 +3,12 @@ const router = express.Router();
 const Product = require("../models/products")
 const User = require("../models/user");
 
+router.get("/", (req, res) =>{
+    Product.find().then(result=>{
+        res.json({result})
+    })
+  })
+
 router.post("/" , (req, res) => {
     let userId = req.body.userId;
     console.log(userId)

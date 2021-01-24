@@ -92,7 +92,7 @@ function App() {
             <Playstions />
         </Route>
         <Route path="/product">
-            <Product product={product} setProduct={setProduct}/>
+            <Product product={product} setProduct={setProduct} user={auth.currentUser}/>
         </Route>
 
         <Route path="*">

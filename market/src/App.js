@@ -16,14 +16,20 @@ import {Product} from "./components/pages/Product"
 import Xbox from "./components/pages/Xbox"
 import {Playstions} from "./components/pages/Playstions"
 import Footer from "./components/pages/Footer"
+import axios from "axios"
 function App() {
   //state
 
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
-
+  const [product , setProduct] = useState([])
 
  
-
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/product")
+    .then(response =>{
+      setProduct(response)
+    })
+  },[])
 
   
 
@@ -77,7 +83,7 @@ function App() {
             <Playstions />
         </Route>
         <Route path="/product">
-            <Product />
+            <Product product={product}/>
         </Route>
       </Switch>
       <Footer />

@@ -29,12 +29,14 @@ export default function UserProfile(props) {
   // delet handle
   // "/:productId/:userId"
   const handleDelete = (productId) =>{
-    // axios.delete(`http://localhost:5000/api/user/${productId}/${props.user._id}`)
-    // .then(data => {
+    console.log("pro ID ========== ",productId);
 
-    //   console.log("delete data ======= ",data)
-    // })
-    // .catch((err) => console.log(err));
+    axios.delete(`http://localhost:5000/api/product/${productId}`) ///${props.user._id}
+    .then(data => {
+
+      console.log("delete data ======= ",data)
+    })
+    .catch((err) => console.log(err));
   }
 
 
@@ -48,11 +50,13 @@ export default function UserProfile(props) {
           <Card.Body>
             <Card.Title>{ele.name}</Card.Title> 
             <Card.Text>
-              {" "}
+              {""}
               {ele.features}
             </Card.Text>
-            <Button variant="primary">Edit</Button>
-            <Button variant="primary" onClick={handleDelete}>Delete</Button>
+            <Button as={Link} to={`/edit/${ele._id}`} variant="primary">
+                Edit
+              </Button>
+            <Button variant="primary" onClick={()=>handleDelete(ele._id)}>Delete</Button>
           </Card.Body>
         </Card>
       </div>

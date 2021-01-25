@@ -19,6 +19,7 @@ import { Playstions } from "./components/pages/Playstions";
 import Footer from "./components/pages/Footer";
 import axios from "axios";
 import Platforms from "./components/pages/Platforms";
+import {EditPro} from "./components/pages/EditPro";
 function App() {
   //state
 
@@ -37,7 +38,7 @@ function App() {
   }, []);
 
   console.log("product", product);
-
+  
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -98,6 +99,11 @@ function App() {
               </Route>
             );
           })}
+
+          <Route exact path="/edit/:productId">
+            <EditPro user={auth.currentUser} />
+          </Route>
+
           <Route path="*">
             <h1>Page not Found</h1>
           </Route>

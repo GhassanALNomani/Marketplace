@@ -17,30 +17,8 @@ router.get("/:id" , (req, res) =>{
     .catch((err) => res.json({msg: err}))
 })
 
-//delete
-// router.delete("/:productId/:userId", (req, res)=>{
-//     let productId = req.params.productId;
-//     let userId = req.params.userId
-//     User.findById(userId)
-//     .then(user =>{
-//         let products = user.products.filter(product =>{
-//             return !(product == productId)
-//         })
-
-//         User.findByIdAndUpdate(userId, {products : products}, {new:true})
-//         .then(updateUser=>{
-//             res.json({msg: "product deleted"}, {products : updateUser.products})
-//         })
-//     })
-// })
 
 
-
-
-
-
-
-//-------------------------------------------------------------------------------------------
 router.get("/", (req, res) => {
     User.find()
         .then((users) => {

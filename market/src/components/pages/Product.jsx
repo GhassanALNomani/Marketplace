@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Container, Row, Col,Button,Card,Form } from "react-bootstrap";
 import axios from "axios"
+import ProductCard from './ProductCard';
 
 
 
@@ -8,6 +9,8 @@ import axios from "axios"
 
 
 export const Product = (props, {product, setProduct}) => {
+    const [types , setTypes] = useState([])
+    const [selectProduct , setselectProduct] = useState([])
 
     // const allProduct = product.map(elem =>{
     //     return elem.user.products
@@ -32,6 +35,22 @@ export const Product = (props, {product, setProduct}) => {
         });
         console.log(productFields)
     };
+
+    useEffect(() => {
+        axios.get('/product')
+        .then(res =>{     
+            setProduct(res.data)
+            setselectProduct(res.data) 
+            let types = res.data.map(ele => ele.typee ) 
+            types.unshift('All') 
+            setTypes(Array.from(new Set(types))) // to make the array uniqe and non duplicate the elements
+        })
+    }, [])
+
+    const  allProduct = selectProduct.map(products =>{
+
+        return <ProductCard products= {products} setselectProduct= {props.setselectProduct} />
+      })
 
 
 

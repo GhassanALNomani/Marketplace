@@ -1,42 +1,43 @@
 import { useEffect, useState } from "react";
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
-import {Header} from './components/pages/Header'
-import { Button ,Carousel} from 'react-bootstrap';
+import "./App.css";
+import { Header } from "./components/pages/Header";
+import { Button, Carousel } from "react-bootstrap";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
-import {Nave} from "./components/pages/Nave"
-import {Home} from "./components/pages/Home";
-import {Pc} from "./components/pages/Pc";
-import AuthRoute from "./components/pages/AuthRoute"
+import { Nave } from "./components/pages/Nave";
+import { Home } from "./components/pages/Home";
+import { Pc } from "./components/pages/Pc";
+import AuthRoute from "./components/pages/AuthRoute";
 import UserProfile from "./components/pages/UserProfile";
-import Reset from "./components/pages/Reset"
-import {Product} from "./components/pages/Product"
-import Xbox from "./components/pages/Xbox"
-import {Playstions} from "./components/pages/Playstions"
-import Footer from "./components/pages/Footer"
-import axios from "axios"
-import Platforms from "./components/pages/Platforms"
+import Reset from "./components/pages/Reset";
+import { Product } from "./components/pages/Product";
+import Xbox from "./components/pages/Xbox";
+import { Playstions } from "./components/pages/Playstions";
+import Footer from "./components/pages/Footer";
+import axios from "axios";
+import Platforms from "./components/pages/Platforms";
 function App() {
   //state
 
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
-  const [product , setProduct] = useState([])
+  const [product, setProduct] = useState([]);
 
- // call products 
+  // call products
   useEffect(() => {
-    axios.get("http://localhost:5000/api/product")
-    .then(response =>{
-      setProduct(response.data.result)
-      console.log("product", product)
-    })
-    .catch((err) => console.log(err))
-  },[])
+    axios
+      .get("http://localhost:5000/api/product")
+      .then((response) => {
+        setProduct(response.data.result);
+        console.log("product", product);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   console.log("product", product);
-  
+
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -54,63 +55,56 @@ function App() {
 
   return (
     <>
-    
-    <Router>
-      <Header/>
-      <Nave isLoggedIn={auth.isLoggedIn} loginCallback={userLogin}/>
-      <Switch>
-        <Route path="/profile">
-            <AuthRoute 
-              setAuth = {setAuth}
-            auth={auth}
-            product={product} />
-        </Route>
-           
-        <Route path="/login">
+      <Router>
+        <Header />
+        <Nave isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} />
+        <Switch>
+          <Route path="/profile">
+            <AuthRoute
+              setAuth={setAuth}
+              auth={auth}
+              product={product}
+              user={auth.currentUser}
+            />
+          </Route>
+
+          <Route path="/login">
             <Login loginCallback={userLogin} />
-        </Route>
-        
-        <Route path="/reset">
-            <Reset
-              user={auth.currentUser} />
-        </Route>
+          </Route>
 
-        <Route path="/signup">
+          <Route path="/reset">
+            <Reset user={auth.currentUser} />
+          </Route>
+
+          <Route path="/signup">
             <Signup loginCallback={userLogin} />
-        </Route>
+          </Route>
 
-        <Route exact path="/">
+          <Route exact path="/">
             <Home product={product} />
-        </Route>
+          </Route>
+          <Route path="/product">
+            <Product
+              product={product}
+              setProduct={setProduct}
+              user={auth.currentUser}
+            />
+          </Route>
 
-        {/* Start component footer */}
-        {/* <Route path="/pc">
-            <Pc product={product}/>
-        </Route> */}
-
-        {/* <Route path="/xbox">
-            <Xbox product={product}/>
-        </Route> */}
-        {/* <Route path="/playstions">
-            <Playstions product={product}/>
-        </Route> */}
-        <Route path="/product">
-            <Product product={product} setProduct={setProduct} user={auth.currentUser}/>
-        </Route>
-
-        {["xbox", "playstions", "pc"].map(ele => {
-         return <Route path={`/${ele}`}>
-          <Platforms type={ele} product={product}/>
-      </Route>
-        })}
-        <Route path="*">
+          {["xbox", "playstions", "pc"].map((ele) => {
+            return (
+              <Route path={`/${ele}`}>
+                <Platforms type={ele} product={product} />
+              </Route>
+            );
+          })}
+          <Route path="*">
             <h1>Page not Found</h1>
           </Route>
-      </Switch>
-      <Footer />
-    </Router>
+        </Switch>
+        <Footer />
+      </Router>
     </>
-    
   );
 }
 

@@ -6,7 +6,26 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 
+//
+router.get("/:id" , (req, res) =>{
+    let userId = req.params.id
+    User.findById(userId)
+    .then(userById =>{
+        res.json(userById)
+    })
+    .catch((err) => res.json({msg: err}))
+})
 
+//pup
+///sdasdas
+
+
+
+
+
+
+
+//----------------------------------------
 router.get("/", (req, res) => {
     User.find()
         .then((users) => {
@@ -14,6 +33,7 @@ router.get("/", (req, res) => {
         })
         .catch((err) => res.json({ msg: err }));
 });
+
 
 router.post(('/register'), (req, res) => {
     

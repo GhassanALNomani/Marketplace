@@ -18,6 +18,7 @@ import Xbox from "./components/pages/Xbox"
 import {Playstions} from "./components/pages/Playstions"
 import Footer from "./components/pages/Footer"
 import axios from "axios"
+import Platforms from "./components/pages/Platforms"
 function App() {
   //state
 
@@ -28,15 +29,14 @@ function App() {
   useEffect(() => {
     axios.get("http://localhost:5000/api/product")
     .then(response =>{
-      setProduct(response)
+      setProduct(response.data.result)
+      console.log("product", product)
     })
     .catch((err) => console.log(err))
   },[])
 
-console.log(product)
-
+  console.log("product", product);
   
-
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -62,7 +62,8 @@ console.log(product)
         <Route path="/profile">
             <AuthRoute 
               setAuth = {setAuth}
-            auth={auth} />
+            auth={auth}
+            product={product} />
         </Route>
            
         <Route path="/login">
@@ -79,24 +80,29 @@ console.log(product)
         </Route>
 
         <Route exact path="/">
-            <Home />
+            <Home product={product} />
         </Route>
 
         {/* Start component footer */}
-        <Route path="/pc">
-            <Pc />
-        </Route>
+        {/* <Route path="/pc">
+            <Pc product={product}/>
+        </Route> */}
 
-        <Route path="/xbox">
-            <Xbox />
-        </Route>
-        <Route path="/playstions">
-            <Playstions />
-        </Route>
+        {/* <Route path="/xbox">
+            <Xbox product={product}/>
+        </Route> */}
+        {/* <Route path="/playstions">
+            <Playstions product={product}/>
+        </Route> */}
         <Route path="/product">
             <Product product={product} setProduct={setProduct} user={auth.currentUser}/>
         </Route>
 
+        {["xbox", "playstions", "pc"].map(ele => {
+         return <Route path={`/${ele}`}>
+          <Platforms type={ele} product={product}/>
+      </Route>
+        })}
         <Route path="*">
             <h1>Page not Found</h1>
           </Route>

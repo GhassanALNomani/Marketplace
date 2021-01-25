@@ -4,10 +4,17 @@ import { Route, Redirect, Link } from "react-router-dom";
 import axios from 'axios'
 
 export default function UserProfile(props) {
-    const { name } = props.auth.currentUser;
-//   const [alluserProduct, setAluserProduct] = useState([])
-//   const { name, email, cart, _id } = props.auth.currentUser;
+    
 
+  const { name, email, cart, _id } = props.auth.currentUser;
+//   useEffect(() => {
+//     axios.get("http://localhost:5000/api/user")
+//     .then(response =>{
+//       setProduct(response.data)
+//       console.log("product", product)
+//     })
+//     .catch((err) => console.log(err))
+//   },[])
 //   useEffect(() => {
 //     axios.get('https://sei12.herokuapp.com/movei/json')
 //       .then(data => {

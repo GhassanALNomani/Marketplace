@@ -9,7 +9,8 @@ export default function AuthRoute(props) {
       <Route>
         <UserProfile
           setAuth={props.setAuth}
-        auth = {props.auth} />
+        auth = {props.auth}
+        product={props.product} />
       </Route>
     );
   } else {

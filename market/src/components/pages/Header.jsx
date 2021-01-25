@@ -6,7 +6,19 @@ import { Button ,Carousel} from 'react-bootstrap';
 
 
 
-export const Header = () => {
+export const Header = (props) => {
+
+
+
+    const handlerClickPc = (e) =>{
+        // e.preventdefault();
+        
+
+    }
+
+
+
+
     return (
         <>
             <Carousel>

@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 import ReactStars from 'react-stars'
 
+
 export default function SingleProduct(props) {
     const [productOne, setProductOne] = useState({})
     const [errorRating , setErrorRating] = useState(false)
@@ -67,7 +68,7 @@ export default function SingleProduct(props) {
           {productOne &&
           <div style={{display: 'flex', justifyContent: 'center'}}>
               <Card style={{ width: "400px " , height:"500px" }}>
-                <Card.Img variant="top" src="https://gmedia.playstation.com/is/image/SIEPDC/playstation-5-with-dualsense-front-product-shot-01-ps5-en-30jul20?$native--t$" />{" "}
+                <Card.Img variant="top" src="" />{" "}
                 
                 <Card.Body>
                   <Card.Title>{productOne.name}</Card.Title> 
@@ -80,8 +81,10 @@ export default function SingleProduct(props) {
                     <InputGroup.Text>{productOne.price}</InputGroup.Text>
                   </InputGroup.Append>
                 </InputGroup>
-                {errorRating && <div>
-                  error already reviewed
+                {errorRating && <div className="error-anim" style={{color :"#C70039" }}>
+                  Error! already reviewed
+                  <span class="gradient"></span>
+                  <span class="spotlight"></span>
                 </div>}
                 <ReactStars
                   count={5}

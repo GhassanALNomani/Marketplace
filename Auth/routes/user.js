@@ -7,14 +7,15 @@ require("dotenv").config();
 
 
 //
-router.get("/:id" , (req, res) =>{
+router.get("/:id", (req, res) => {
     let userId = req.params.id
     User.findById(userId)
-    .populate("products")
-    .then(userById =>{
-        res.json(userById)
-    })
-    .catch((err) => res.json({msg: err}))
+        .populate("products")
+        .populate("cart")
+        .then(userById => {
+            res.json(userById)
+        })
+        .catch((err) => res.json({ msg: err }))
 })
 
 
@@ -29,7 +30,7 @@ router.get("/", (req, res) => {
 
 
 router.post(('/register'), (req, res) => {
-    
+
     const newUser = {
         email: req.body.email,
         password: req.body.password,
@@ -122,6 +123,8 @@ router.post('/reset', (req, res) => {
     })
 
 })
+
+
 
 
 module.exports = router;

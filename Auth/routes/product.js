@@ -65,13 +65,63 @@ router.post("/review", (req,res)=>{
             })
         }else{
             console.log('else')
-            res.send('error adding review')
+            res.send('Error! you already reviewed')
         }
         console.log(result)
     })
 })
 
 //-------------------------------
+
+//delete
+router.delete("/:productId", (req, res)=>{
+    let productId = req.params.productId;
+
+    Product.findByIdAndDelete(productId)
+
+    .then(pro => {
+        console.log("delete pro", productId);
+    })
+    .catch(err=> res.json({msg:err}))
+})
+
+
+
+router.get("/:productId", (req,res) => {
+    let productId = req.params.productId;
+    Product.findById(productId)
+    .then(pros=>{
+        //res.json(pros)
+        res.json({ pros });
+    })
+    .catch(err=>res.json({msg:err}))
+})
+
+
+
+//edit
+router.put("/:productId", (req,res)=>{
+    let productId = req.params.productId;
+    console.log("serverrrrrrrrrrrr",productId);
+    let updateProduct = {
+        name : req.body.name,
+        discription : req.body.discription,
+        image : req.body.image,
+        price : req.body.price,
+        features : req.body.features,
+        category : req.body.category,
+        type : req.body.type,
+        company : req.body.company,
+    }
+    console.log(updateProduct);
+    Product.findByIdAndUpdate(productId, updateProduct)
+    .then(pro =>{
+        console.log("update product :", pro)
+    })
+    .catch(err=>res.json({msg:err}))
+})
+
+
 
 
 

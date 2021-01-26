@@ -10,6 +10,10 @@ var ProductSchema = new mongoose.Schema({
     category: String,
     type: String,
     company: String,
+    reviews: {
+        type: Array,
+        default: []
+    }
 })
 
 var Product = mongoose.model('Product', ProductSchema);

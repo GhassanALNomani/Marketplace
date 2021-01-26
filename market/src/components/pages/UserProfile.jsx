@@ -120,7 +120,6 @@ export default function UserProfile(props) {
               </Button>
             </div>
           </Col>
-
           <Col>
                 {allProducts}
           </Col>

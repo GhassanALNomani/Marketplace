@@ -21,6 +21,8 @@ import axios from "axios";
 import Platforms from "./components/pages/Platforms";
 import { EditPro } from "./components/pages/EditPro";
 import Cart from "./components/pages/Cart";
+import SingleProduct from "./components/pages/SingleProduct";
+
 function App() {
   //state
 
@@ -96,6 +98,11 @@ function App() {
           </Route>
 
 
+          <Route path="/product/:id">
+              <SingleProduct user={auth.currentUser}/>
+          </Route>
+
+
           <Route path="/product">
             <Product
               product={product}
@@ -113,9 +120,11 @@ function App() {
           })}
 
 
+
           <Route exact path="/edit/:productId">
             <EditPro user={auth.currentUser} />
           </Route>
+
 
 
           <Route path={`/:userId`}>
@@ -134,6 +143,7 @@ function App() {
       </>}
       </Router>
     </>
+    
   );
 }
 

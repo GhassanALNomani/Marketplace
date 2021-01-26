@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function UserProfile(props) {
   const [userDetail, setUserDetail] = useState({});
- 
+  
 
 
   useEffect(() => {
@@ -25,7 +25,46 @@ export default function UserProfile(props) {
 
   //functional
 
+
+  // delet handle
+  // "/:productId/:userId"
+  const handleDelete = (productId) =>{
+    console.log("pro ID ========== ",productId);
+
+    axios.delete(`http://localhost:5000/api/product/${productId}`) ///${props.user._id}
+    .then(data => {
+
+      console.log("delete data ======= ",data)
+    })
+    .catch((err) => console.log(err));
+  }
+
+
    //map for products   
+  const allProducts = userDetail.data && userDetail.data.products.map(ele=>{
+      return(
+          
+        <div className="right-side">
+        <Card style={{ width: "18rem" }}>
+          <Card.Img variant="top" src="holder.js/100px180" />{" "}
+          <Card.Body>
+            <Card.Title>{ele.name}</Card.Title> 
+            <Card.Text>
+              {""}
+              {ele.features}
+            </Card.Text>
+            <Button as={Link} to={`/edit/${ele._id}`} variant="primary">
+                Edit
+              </Button>
+            <Button variant="primary" onClick={()=>handleDelete(ele._id)}>Delete</Button>
+          </Card.Body>
+        </Card>
+      </div>
+      )
+  })
+
+  
+
 
 
 
@@ -40,7 +79,7 @@ export default function UserProfile(props) {
         <Row>
           <Col style={{ textAlign: "center" }}>
             <div className="left-side">
-              {userDetail && 
+              {userDetail.data && 
                     (
                         <>
                         <div>
@@ -81,25 +120,8 @@ export default function UserProfile(props) {
               </Button>
             </div>
           </Col>
-
           <Col>
-            <div className="right-side">
-              <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src="holder.js/100px180" />{" "}
-                {/*here img product nawer */}
-                <Card.Body>
-                  <Card.Title>{}</Card.Title> {/*here name product nawer */}
-                  <Card.Text>
-                    {" "}
-                    {/*Descriptions product */}
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </Card.Text>
-                  <Button variant="primary">Edit</Button>
-                  <Button variant="primary">Delete</Button>
-                </Card.Body>
-              </Card>
-            </div>
+                {allProducts}
           </Col>
         </Row>
       </Container>

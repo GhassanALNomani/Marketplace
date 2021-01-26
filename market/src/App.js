@@ -19,6 +19,8 @@ import { Playstions } from "./components/pages/Playstions";
 import Footer from "./components/pages/Footer";
 import axios from "axios";
 import Platforms from "./components/pages/Platforms";
+import SingleProduct from "./components/pages/SingleProduct";
+import {EditPro} from "./components/pages/EditPro";
 function App() {
   //state
 
@@ -83,6 +85,9 @@ function App() {
           <Route exact path="/">
             <Home product={product} />
           </Route>
+          <Route path="/product/:id">
+              <SingleProduct user={auth.currentUser}/>
+          </Route>
           <Route path="/product">
             <Product
               product={product}
@@ -98,6 +103,10 @@ function App() {
               </Route>
             );
           })}
+           <Route exact path="/edit/:productId">
+            <EditPro user={auth.currentUser} />
+          </Route>
+          
           <Route path="*">
             <h1>Page not Found</h1>
           </Route>

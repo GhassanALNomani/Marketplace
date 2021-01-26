@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
 import axios from "axios"
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 
-
-
-
-export const Product = (props, { product, setProduct }) => {
+export const EditPro = (props) => {
+    const {productId} = useParams();
+  
     const history = useHistory();
-    // const allProduct = product.map(elem =>{
-    //     return elem.user.products
-    // })
-    // console.log(allProduct)
 
     const [productFields, setProductFields] = useState({
         name: "",
@@ -20,10 +15,26 @@ export const Product = (props, { product, setProduct }) => {
         features: "",
         image: "",
         price: "",
-        category: "pc",
-        type: "devices",
+        category: "",
+        type: "All",
         company: ""
     });
+
+
+    const getProduct = () =>{
+        console.log(productId);
+        axios
+              .get(`http://localhost:5000/api/product/${productId}`)
+              .then(data => {
+                setProductFields(data.data.pros);
+                console.log("data ==============================:", data.data.pros)
+              })
+              .catch((err) => console.log(err));
+    }
+    
+    useEffect(() => {
+        getProduct()
+    }, [])
 
     const onChangeInput = (event) => {
         const { name, value } = event.target;
@@ -37,44 +48,44 @@ export const Product = (props, { product, setProduct }) => {
 
 
 
-    const handleAddtoShop = (e) => {
+    const handleEditToShop = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:5000/api/product/?userId=${props.user._id}`, productFields)
+        axios.put(`http://localhost:5000/api/product/${productId}`, productFields)
             .then(response => {
                 console.log(response)
-                history.push("/profile");
+                history.push("/");
             })
     }
 
     return (
         <Container>
-            <Form>
+            <Form onSubmit={handleEditToShop}>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control onChange={(e) => onChangeInput(e)} type="text" placeholder="Name Product" name="name" />
+                        <Form.Control onChange={(e) => onChangeInput(e)} type="text" name="name" value={productFields.name} />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Image</Form.Label>
-                        <Form.Control onChange={(e) => onChangeInput(e)} type="file" name="image" />
+                        <Form.Control onChange={(e) => onChangeInput(e)} type="file" name="image" value={productFields.image}/>
                     </Form.Group>
                 </Form.Row>
 
                 <Form.Group controlId="formGridAddress1">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control onChange={(e) => onChangeInput(e)} placeholder="Description" name="description" />
+                    <Form.Control onChange={(e) => onChangeInput(e)} name="description" value={productFields.description}/>
                 </Form.Group>
 
                 <Form.Group controlId="formGridAddress2">
-                    <Form.Label>Features</Form.Label>
-                    <Form.Control onChange={(e) => onChangeInput(e)} placeholder="Features" name="features" />
+                    <Form.Label> Features </Form.Label>
+                    <Form.Control onChange={(e) => onChangeInput(e)}  name="features" value={productFields.features}/>
                 </Form.Group>
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridCity" >
                         <Form.Label>Price</Form.Label>
-                        <Form.Control onChange={(e) => onChangeInput(e)} name="price" />
+                        <Form.Control onChange={(e) => onChangeInput(e)} name="price" value={productFields.price}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState">
@@ -87,7 +98,7 @@ export const Product = (props, { product, setProduct }) => {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>Type</Form.Label>
+                        <Form.Label> Type </Form.Label>
                         <Form.Control onChange={(e) => onChangeInput(e)} name="type" as="select" defaultValue="Choose...">
                             <option>devices</option>
                             <option>games</option>
@@ -96,15 +107,15 @@ export const Product = (props, { product, setProduct }) => {
 
                     <Form.Group as={Col} controlId="formGridZip">
                         <Form.Label>Company</Form.Label>
-                        <Form.Control onChange={(e) => onChangeInput(e)} name="company" />
+                        <Form.Control onChange={(e) => onChangeInput(e)} name="company" value={productFields.comany} />
                     </Form.Group>
                 </Form.Row>
 
-
-                <Button onClick={handleAddtoShop} variant="primary" type="submit" style={{ backgroundColor: "#2C3A47", fontSize: "2.5vh", border: "0", borderRadius: "15px" }} className="colorbutt colorlink">
-                    Add To Shop
-                    </Button>
+                
+                <Button variant="primary" type="submit" style={{ backgroundColor: "#2C3A47", fontSize: "2.5vh", border: "0", borderRadius: "15px" }} className="colorbutt colorlink">
+                    Edit Product
+                </Button>
             </Form>
         </Container>
     )
-}
+ }

@@ -10,22 +10,15 @@ require("dotenv").config();
 router.get("/:id" , (req, res) =>{
     let userId = req.params.id
     User.findById(userId)
+    .populate("products")
     .then(userById =>{
         res.json(userById)
     })
     .catch((err) => res.json({msg: err}))
 })
 
-//pup
-///sdasdas
 
 
-
-
-
-
-
-//----------------------------------------
 router.get("/", (req, res) => {
     User.find()
         .then((users) => {

@@ -59,7 +59,7 @@ export default function SingleProduct(props) {
       {productOne &&
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Card className="card" style={{ width: "700px ", height: "550px" }}>
-            <Card.Img style={{ margin: "20px", padding: "10px", width: "400px ", height: "200px" }} variant="top" src="https://raqamitv.com/wp-content/uploads/2020/11/Playstation-5.jpg" />{" "}
+            <Card.Img style={{ margin: "20px", padding: "10px", width: "400px ", height: "200px" }} variant="top" src={productOne.image} />{" "}
 
             <Card.Body>
               <Card.Title>{productOne.name}</Card.Title>

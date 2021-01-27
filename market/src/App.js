@@ -94,7 +94,8 @@ function App() {
 
           <Route exact path="/">
             <Home product={product}
-              user={auth.currentUser} />
+              user={auth.currentUser}
+              isLoggedIn={auth.isLoggedIn} />
           </Route>
 
 

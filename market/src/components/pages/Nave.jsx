@@ -44,11 +44,12 @@ export const Nave = (props) => {
                     </Nav.Link>
                             <Nav.Link as={Link} to="/" className="style-nav" onClick={handleLogout}>
                                 <p>Logout</p>
-                            </Nav.Link> </>}
+                            </Nav.Link> 
+                            <Nav.Link as={Link} to={`/${props.user._id}`} className="style-nav">
+                            <p>Cart</p>
+                        </Nav.Link> </>}
                     {/* need to be fixed when log out _id is not defined */}
-                    <Nav.Link as={Link} to={`/${props.user._id}`} className="style-nav">
-                        <p>Cart</p>
-                    </Nav.Link>
+                    
 
                 </Nav>
 

@@ -6,7 +6,6 @@ import axios from "axios";
 export default function Reset(props) {
     const history = useHistory();
     const email = props.user.email;
-    console.log("email", email);
 
     const [pass, setPass] = useState({}); // pass info
 

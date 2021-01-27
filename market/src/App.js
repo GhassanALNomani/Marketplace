@@ -30,6 +30,7 @@ function App() {
   const [product, setProduct] = useState([]);
   const [loadingData, setLoadingData] = useState(false);
 
+
   // call products
   useEffect(() => {
     axios
@@ -37,12 +38,9 @@ function App() {
       .then((response) => {
         setProduct(response.data.result);
         setLoadingData(true)
-        console.log("product", product);
       })
       .catch((err) => console.log(err));
   }, []);
-
-  console.log("product", product);
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -100,7 +98,7 @@ function App() {
 
 
           <Route path="/product/:id">
-              <SingleProduct user={auth.currentUser}/>
+            <SingleProduct user={auth.currentUser} />
           </Route>
 
 
@@ -112,6 +110,7 @@ function App() {
             />
           </Route>
 
+
           {["xbox", "playstions", "pc"].map((ele) => {
             return (
               <Route path={`/${ele}`}>
@@ -121,11 +120,9 @@ function App() {
           })}
 
 
-
           <Route exact path="/edit/:productId">
             <EditPro user={auth.currentUser} />
           </Route>
-
 
 
           <Route path={`/:userId`}>
@@ -139,12 +136,10 @@ function App() {
 
 
         </Switch>
-
         <Footer />
       </>}
       </Router>
     </>
-    
   );
 }
 

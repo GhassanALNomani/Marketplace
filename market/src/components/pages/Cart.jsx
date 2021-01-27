@@ -14,34 +14,21 @@ export default function Cart(props) {
     //Functional
 
     // View the cart
-
-    ////////////////////////////////////////
-    // data.data.cart.cart
     useEffect(() => {
         axios
             .get(`http://localhost:5000/api/user/${userId}`)
             .then(data => {
-                console.log("iddddddddddd??", userId);
-                console.log("data 111111111111111:????", data)
                 setCart(data.data.cart);
-                console.log("data :", data);
-                console.log("give me data path:", cart);
-                // console.log("data :", data)
             })
             .catch((err) => console.log(err));
-
-
     }, []);
 
     const handleDelete = (productId) => {
-        console.log("pro ID ========== ", productId);
-        console.log("pro ID ========== ", userId);
 
         // http://localhost:5000/api/cart/${props.user._id}/${productId}
         axios
             .delete(`http://localhost:5000/api/cart/${userId}/${productId}`) ///${props.user._id}
             .then(data => {
-
                 console.log("delete data ======= ", data)
             })
             .catch((err) => console.log("front end", err));

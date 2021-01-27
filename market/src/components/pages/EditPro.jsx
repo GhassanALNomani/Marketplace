@@ -27,7 +27,6 @@ export const EditPro = (props) => {
             .get(`http://localhost:5000/api/product/${productId}`)
             .then(data => {
                 setProductFields(data.data.pros);
-                console.log("data ==============================:", data.data.pros)
             })
             .catch((err) => console.log(err));
     }
@@ -43,7 +42,6 @@ export const EditPro = (props) => {
             ...productFields,
             [name]: value,
         });
-        console.log(productFields)
     };
 
 

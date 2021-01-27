@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function UserProfile(props) {
   const [userDetail, setUserDetail] = useState({});
-  
+
 
 
   useEffect(() => {
@@ -19,51 +19,48 @@ export default function UserProfile(props) {
       })
       .catch((err) => console.log(err));
 
-      
+
   }, []);
-  
+
 
   //functional
 
 
   // delet handle
-  // "/:productId/:userId"
-  const handleDelete = (productId) =>{
-    console.log("pro ID ========== ",productId);
+  const handleDelete = (productId) => {
 
     axios.delete(`http://localhost:5000/api/product/${productId}`) ///${props.user._id}
-    .then(data => {
-
-      console.log("delete data ======= ",data)
-    })
-    .catch((err) => console.log(err));
+      .then(data => {
+        console.log("delete data ", data)
+      })
+      .catch((err) => console.log(err));
   }
 
 
-   //map for products   
-  const allProducts = userDetail.data && userDetail.data.products.map(ele=>{
-      return(
-          
-        <div className="right-side">
+  //map for products   
+  const allProducts = userDetail.data && userDetail.data.products.map(ele => {
+    return (
+
+      <div className="right-side">
         <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src="holder.js/100px180" />{" "}
           <Card.Body>
-            <Card.Title>{ele.name}</Card.Title> 
+            <Card.Title>{ele.name}</Card.Title>
             <Card.Text>
               {""}
               {ele.features}
             </Card.Text>
             <Button as={Link} to={`/edit/${ele._id}`} variant="primary">
-                Edit
+              Edit
               </Button>
-            <Button variant="primary" onClick={()=>handleDelete(ele._id)}>Delete</Button>
+            <Button variant="primary" onClick={() => handleDelete(ele._id)}>Delete</Button>
           </Card.Body>
         </Card>
       </div>
-      )
+    )
   })
 
-  
+
 
 
 
@@ -74,26 +71,26 @@ export default function UserProfile(props) {
 
   //JSX
   return (
-    <> 
+    <>
       <Container>
         <Row>
           <Col style={{ textAlign: "center" }}>
             <div className="left-side">
-              {userDetail.data && 
-                    (
-                        <>
-                        <div>
-                            <img
-                                className="img"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUrrrKLWMi_q3pHEePQ6tU2SR8KFm4A0ntA&usqp=CAU"
-                                alt=""
-                            />
-                        </div>
-                        <div className="info-user">
-                            <h2>{userDetail.data.name}</h2>
-                        </div>
-                        </>
-                    )}
+              {userDetail.data &&
+                (
+                  <>
+                    <div>
+                      <img
+                        className="img"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUrrrKLWMi_q3pHEePQ6tU2SR8KFm4A0ntA&usqp=CAU"
+                        alt=""
+                      />
+                    </div>
+                    <div className="info-user">
+                      <h2>{userDetail.data.name}</h2>
+                    </div>
+                  </>
+                )}
               <Button
                 style={{
                   backgroundColor: "#2C3A47",
@@ -121,7 +118,7 @@ export default function UserProfile(props) {
             </div>
           </Col>
           <Col>
-                {allProducts}
+            {allProducts}
           </Col>
         </Row>
       </Container>

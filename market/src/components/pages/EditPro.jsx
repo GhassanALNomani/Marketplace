@@ -5,8 +5,8 @@ import { useHistory, useParams } from "react-router-dom";
 
 
 export const EditPro = (props) => {
-    const {productId} = useParams();
-  
+    const { productId } = useParams();
+
     const history = useHistory();
 
     const [productFields, setProductFields] = useState({
@@ -21,17 +21,16 @@ export const EditPro = (props) => {
     });
 
 
-    const getProduct = () =>{
+    const getProduct = () => {
         console.log(productId);
         axios
-              .get(`http://localhost:5000/api/product/${productId}`)
-              .then(data => {
+            .get(`http://localhost:5000/api/product/${productId}`)
+            .then(data => {
                 setProductFields(data.data.pros);
-                console.log("data ==============================:", data.data.pros)
-              })
-              .catch((err) => console.log(err));
+            })
+            .catch((err) => console.log(err));
     }
-    
+
     useEffect(() => {
         getProduct()
     }, [])
@@ -43,7 +42,6 @@ export const EditPro = (props) => {
             ...productFields,
             [name]: value,
         });
-        console.log(productFields)
     };
 
 
@@ -68,24 +66,24 @@ export const EditPro = (props) => {
 
                     <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Image</Form.Label>
-                        <Form.Control onChange={(e) => onChangeInput(e)} type="file" name="image" value={productFields.image}/>
+                        <Form.Control onChange={(e) => onChangeInput(e)} type="file" name="image" value={productFields.image} />
                     </Form.Group>
                 </Form.Row>
 
                 <Form.Group controlId="formGridAddress1">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control onChange={(e) => onChangeInput(e)} name="description" value={productFields.description}/>
+                    <Form.Control onChange={(e) => onChangeInput(e)} name="description" value={productFields.description} />
                 </Form.Group>
 
                 <Form.Group controlId="formGridAddress2">
                     <Form.Label> Features </Form.Label>
-                    <Form.Control onChange={(e) => onChangeInput(e)}  name="features" value={productFields.features}/>
+                    <Form.Control onChange={(e) => onChangeInput(e)} name="features" value={productFields.features} />
                 </Form.Group>
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridCity" >
                         <Form.Label>Price</Form.Label>
-                        <Form.Control onChange={(e) => onChangeInput(e)} name="price" value={productFields.price}/>
+                        <Form.Control onChange={(e) => onChangeInput(e)} name="price" value={productFields.price} />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState">
@@ -111,11 +109,13 @@ export const EditPro = (props) => {
                     </Form.Group>
                 </Form.Row>
 
-                
+
                 <Button variant="primary" type="submit" style={{ backgroundColor: "#2C3A47", fontSize: "2.5vh", border: "0", borderRadius: "15px" }} className="colorbutt colorlink">
                     Edit Product
                 </Button>
             </Form>
         </Container>
     )
- }
+
+}
+

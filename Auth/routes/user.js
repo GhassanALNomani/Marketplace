@@ -6,15 +6,16 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 
-//
-router.get("/:id" , (req, res) =>{
+// user
+router.get("/:id", (req, res) => {
     let userId = req.params.id
     User.findById(userId)
-    .populate("products")
-    .then(userById =>{
-        res.json(userById)
-    })
-    .catch((err) => res.json({msg: err}))
+        .populate("products")
+        .populate("cart")
+        .then(userById => {
+            res.json(userById)
+        })
+        .catch((err) => res.json({ msg: err }))
 })
 
 
@@ -29,7 +30,7 @@ router.get("/", (req, res) => {
 
 
 router.post(('/register'), (req, res) => {
-    
+
     const newUser = {
         email: req.body.email,
         password: req.body.password,
@@ -101,16 +102,9 @@ router.post('/reset', (req, res) => {
 
     User.findOne({ email: req.body.email }, function (err, foundUser) {
         password = req.body.password; // req.body
-        console.log(foundUser);
         bcrypt.genSalt((err, salt) => {
-            // changes every time
-            console.log("bcrypt salt:", salt);
             bcrypt.hash(password, salt, (err, passwordHash) => {
-                console.log("password:", password);
-                console.log("passwordHash:", passwordHash);
                 User.updateOne({ email: req.body.email }, { password: passwordHash }, (err, newUser) => {
-
-                    // res.redirect("/profile");
                     res.json({ msg: " password changed " });
                 });
             });
@@ -118,10 +112,9 @@ router.post('/reset', (req, res) => {
         if (!foundUser) {
             console.log('No user with email ' + req.body.email);
         }
-
     })
-
 })
+
 
 
 module.exports = router;

@@ -46,7 +46,11 @@ export default function Cart(props) {
                             {ele.price}
                         </td>
                         <td>
+<<<<<<< HEAD
                             <button type="submit" onClick={() => handleDelete(ele._id)} className="btn btn-outline-success" style={{backgroundColor: "black"}}>Delete</button>
+=======
+                        <button type="submit" onClick={() => handleDelete(ele._id)} className="btn btn-outline-success" style={{backgroundColor: "black"}}>Delete</button>
+>>>>>>> 5d62bb6925ff5da4e7639df06df219706586d64b
                         </td>
                     </tr>
                 </tbody>

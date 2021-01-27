@@ -43,12 +43,14 @@ export default function UserProfile(props) {
 
       <div className="right-side">
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />{" "}
+          <Card.Img variant="top" src={ele.image} />{" "}
           <Card.Body>
             <Card.Title>{ele.name}</Card.Title>
             <Card.Text>
-              {""}
               {ele.features}
+            </Card.Text>
+            <Card.Text>
+              {ele.description}
             </Card.Text>
             <Button as={Link} to={`/edit/${ele._id}`} variant="primary">
               Edit
@@ -100,7 +102,7 @@ export default function UserProfile(props) {
                 }}
                 className="colorlink"
               >
-                <Link to="/product">Add Product</Link>
+                <Link to="/product" className="colorlink" >Add Product</Link>
               </Button>
               <Button
                 as={Link}

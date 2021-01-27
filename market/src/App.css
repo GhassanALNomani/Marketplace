@@ -36,5 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.card{
+  margin: 5px;
+  justify-content: center;
+}
 
-
+.card:hover{
+  box-shadow: 4px 5px 30px 9px rgb(228, 226, 226);
+  transform: translateY(-4px);
+}

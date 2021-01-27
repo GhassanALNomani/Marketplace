@@ -66,9 +66,9 @@ export default function SingleProduct(props) {
         return(
           <>
           {productOne &&
-          <div style={{display: 'flex', justifyContent: 'center'}}>
-              <Card style={{ width: "400px " , height:"500px" }}>
-                <Card.Img variant="top" src="" />{" "}
+          <div  style={{display: 'flex', justifyContent: 'center'}}>
+              <Card className="card" style={{ width: "700px " , height:"550px" }}>
+                <Card.Img style={{ margin :"20px", padding : "10px" , width: "400px " , height:"200px" }} variant="top" src="https://raqamitv.com/wp-content/uploads/2020/11/Playstation-5.jpg" />{" "}
                 
                 <Card.Body>
                   <Card.Title>{productOne.name}</Card.Title> 
@@ -92,7 +92,7 @@ export default function SingleProduct(props) {
                   onChange={ratingChanged}
                   size={24}
                   color2={'#ffd700'} />
-                  <Button size="md" onClick={handleRating}>Review</Button>
+                  <Button style={{ backgroundColor: "black" , margin :"10px"}} size="md" onClick={handleRating}>Review</Button>
                 </Card.Body>
               </Card>
           </div>}

@@ -52,14 +52,14 @@ export const Home = (props) => {
     return (
         <>
             <Container>
-                <Row>
+                {/* <Row>
                     <div className="style-form">
                         <form>
                             <input type="search" className="style-search" />
                             <input type="submit" value="Search" className="style-submit colorlink" />
                         </form>
                     </div>
-                </Row>
+                </Row> */}
                 <Row>
                     {allProduct}
                 </Row>

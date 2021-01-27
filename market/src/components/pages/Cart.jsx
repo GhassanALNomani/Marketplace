@@ -46,7 +46,7 @@ export default function Cart(props) {
                             {ele.price}
                         </td>
                         <td>
-                            <button type="submit" onClick={() => handleDelete(ele._id)} className="btn btn-outline-success">Delete</button>
+                        <button type="submit" onClick={() => handleDelete(ele._id)} className="btn btn-outline-success" style={{backgroundColor: "black"}}>Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -89,7 +89,7 @@ export default function Cart(props) {
 
                 </Row>
             </Container>
-            <button type="submit" className="btn btn-outline-success" style={{ marginLeft: "500px", bottom: "150px" }}>Checkout</button>
+            <button type="submit" className="btn btn-outline-success" style={{ marginLeft: "500px", bottom: "150px", backgroundColor: "black" }}>Checkout</button>
 
         </>
     )

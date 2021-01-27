@@ -8,6 +8,7 @@ A public sale website which developed as a second version of [Public Sale Websit
 A website that allows you to buy and sell tangible products. A registered user is needed to display their products. Each user has a special profile in which he can add his products, modify or delete them.
 
 ---
+## Demo: https://marketplace-sei.herokuapp.com/
 
 
 ## Technical Used

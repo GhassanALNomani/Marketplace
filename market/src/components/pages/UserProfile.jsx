@@ -100,7 +100,7 @@ export default function UserProfile(props) {
                 }}
                 className="colorlink"
               >
-                <Link to="/product">Add Product</Link>
+                <Link to="/product" className="colorlink" >Add Product</Link>
               </Button>
               <Button
                 as={Link}

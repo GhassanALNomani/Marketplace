@@ -36,9 +36,9 @@ export const Home = (props) => {
                         <Card.Body>
                             <Card.Title>{ele.name}</Card.Title>
                             <Card.Text>{ele.features}</Card.Text>
-                            {props.isLoggedIn ? (<Button onClick={() => handleAddToCart(ele._id)} as={Link} variant="primary" to={`/${props.user._id}/${ele._id}`}>
+                            {props.isLoggedIn ? (<Button style={{ backgroundColor: "black" , margin :"10px"}} onClick={() => handleAddToCart(ele._id)} as={Link} variant="primary" to={`/${props.user._id}/${ele._id}`}>
                                 Add to Cart
-                            </Button>) : (<Button onClick={() => handleAddToCart(ele._id)} variant="primary" >
+                            </Button>) : (<Button style={{ backgroundColor: "black" , margin :"10px"}} onClick={() => handleAddToCart(ele._id)} variant="primary" >
                                 Add to Cart
                             </Button>)}
                         </Card.Body>

@@ -10,13 +10,6 @@ export const Header = (props) => {
 
 
 
-    const handlerClickPc = (e) => {
-        // e.preventdefault();
-
-
-    }
-
-
 
 
     return (

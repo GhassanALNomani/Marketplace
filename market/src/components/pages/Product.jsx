@@ -13,7 +13,6 @@ export const Product = (props, { product, setProduct }) => {
     //     return elem.user.products
     // })
     // console.log(allProduct)
-
     const [productFields, setProductFields] = useState({
         name: "",
         description: "",
@@ -24,6 +23,25 @@ export const Product = (props, { product, setProduct }) => {
         type: "devices",
         company: ""
     });
+
+    const uploadImageHundler = (e) => {
+        var format = new FormData()
+        format.append("image", e.target.files[0])
+        axios.post("https://api.imgur.com/3/image/", format, { headers: { "Authorization": "Client-ID 69b46cb86f4a61f" } })
+    
+          .then(data => {
+            setProductFields({
+                ...productFields,
+                ["image"]: data.data.data.link,
+            })
+            console.log("productFields: ",productFields)
+            console.log(data.data.data.link)
+          })
+          .catch(err => console.log(err))
+    }
+
+
+    
 
     const onChangeInput = (event) => {
         const { name, value } = event.target;
@@ -57,7 +75,7 @@ export const Product = (props, { product, setProduct }) => {
 
                     <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Image</Form.Label>
-                        <Form.Control onChange={(e) => onChangeInput(e)} type="file" name="image" />
+                        <Form.Control onChange={(e) =>uploadImageHundler(e)} type="file" name="image" />
                     </Form.Group>
                 </Form.Row>
 

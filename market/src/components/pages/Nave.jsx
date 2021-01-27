@@ -27,10 +27,6 @@ export const Nave = (props) => {
                     <Nav.Link as={Link} className="style-nav" to="/blog">
                         <p>Blog</p>
                     </Nav.Link>
-                    <Nav.Link as={Link} className="style-nav" to="/">
-                        <p>Shop</p>
-                    </Nav.Link>
-
 
                     {!props.isLoggedIn ? <>
                         <Nav.Link as={Link} className="style-nav" to="/login">
@@ -42,12 +38,12 @@ export const Nave = (props) => {
                     </> : <> <Nav.Link as={Link} className="style-nav" to="/profile">
                         <p>Profile</p>
                     </Nav.Link>
-                            <Nav.Link as={Link} to="/" className="style-nav" onClick={handleLogout}>
-                                <p>Logout</p>
-                            </Nav.Link>
                             <Nav.Link as={Link} to={`/${props.user._id}`} className="style-nav">
                                 <p>Cart</p>
-                            </Nav.Link> </>}
+                            </Nav.Link> 
+                            <Nav.Link as={Link} to="/" className="style-nav" onClick={handleLogout}>
+                                <p>Logout</p>
+                            </Nav.Link></>}
 
                 </Nav>
 

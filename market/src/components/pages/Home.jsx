@@ -4,6 +4,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios"
 
 
+
+
 export const Home = (props) => {
     const { productId } = useParams()
     const history = useHistory();
@@ -50,14 +52,14 @@ export const Home = (props) => {
     return (
         <>
             <Container>
-                <Row>
+                {/* <Row>
                     <div className="style-form">
                         <form>
                             <input type="search" className="style-search" />
                             <input type="submit" value="Search" className="style-submit colorlink" />
                         </form>
                     </div>
-                </Row>
+                </Row> */}
                 <Row>
                     {allProduct}
                 </Row>

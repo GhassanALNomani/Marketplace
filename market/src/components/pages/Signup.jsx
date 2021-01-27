@@ -11,7 +11,6 @@ const validtionSchima = Yup.object({
   email: Yup.string().required("Enter your email please").email("example@example.com"),
   password: Yup.string().required("Enter your passwor please!!").min(8, "must be more than 8").max(20, "whatEver")
 })
-
 export default function Signup(props) {
   const history = useHistory();
   const [user, setUser] = useState({ name: "", lastName: "", image: "", email: "", password: "" }); // user info

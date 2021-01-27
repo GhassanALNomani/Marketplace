@@ -62,7 +62,7 @@ export default function Login(props) {
                     </Form.Row>
                     <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
                         Submit
-          </Button>
+                    </Button>
                 </Col>
             </Row>
         </Form>

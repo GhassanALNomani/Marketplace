@@ -58,7 +58,7 @@ export default function Signup(props) {
                     placeholder="First name"
                     name="name"
                   />
-                  <ErrorMessage name="name" render={(msg) =>  <Alert variant={"danger"}>
+                  <ErrorMessage name="name" render={(msg) => <Alert variant={"danger"}>
                     {msg}
                   </Alert>} />
                 </Col>

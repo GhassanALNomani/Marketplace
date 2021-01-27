@@ -94,7 +94,9 @@ function App() {
 
 
           <Route path="/product/:id">
-            <SingleProduct user={auth.currentUser} />
+            <SingleProduct
+              user={auth.currentUser}
+              isLoggedIn={auth.isLoggedIn} />
           </Route>
 
 

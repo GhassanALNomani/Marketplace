@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Header } from './Header'
-import { Theme } from './Theme'
 import { useParams } from 'react-router-dom';
 
 export const Nave = (props) => {
@@ -24,9 +23,6 @@ export const Nave = (props) => {
                     <p>Home</p>
                 </Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link as={Link} className="style-nav" to="/blog">
-                        <p>Blog</p>
-                    </Nav.Link>
 
                     {!props.isLoggedIn ? <>
                         <Nav.Link as={Link} className="style-nav" to="/login">
@@ -48,7 +44,6 @@ export const Nave = (props) => {
                 </Nav>
 
             </Navbar>
-            <Theme />
         </>
     )
 }

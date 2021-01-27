@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { CardGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
+
+
 export const Home = (props) => {
 
      
@@ -23,7 +25,11 @@ export const Home = (props) => {
     
     })
 
-
+//     <Route
+    //   path='/dashboard'
+    //   component={Dashboard}
+    //   isAuthed={true}
+//      />
 
     return (
         <>

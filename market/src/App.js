@@ -20,6 +20,7 @@ import Footer from "./components/pages/Footer";
 import axios from "axios";
 import Platforms from "./components/pages/Platforms";
 import {EditPro} from "./components/pages/EditPro";
+
 function App() {
   //state
 

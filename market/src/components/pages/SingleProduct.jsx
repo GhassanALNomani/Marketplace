@@ -14,7 +14,7 @@ export default function SingleProduct(props) {
   // let score = 5
 
   const handleRating = () => {
-
+    if (props.isLoggedIn) {
     const body = {
       userId: props.user._id,
       score: score,
@@ -23,14 +23,18 @@ export default function SingleProduct(props) {
     }
     // user id 
     // score 
-    axios.post("http://localhost:5000/api/product/review", body)
-      .then(res => {
-        console.log(res)
-        if (res.data == "Error! you already reviewed") {
-          setErrorRating(true)
-        }
-      })
+      axios.post("http://localhost:5000/api/product/review", body)
+        .then(res => {
+          console.log(res)
+          if (res.data == "Error! you already reviewed") {
+            setErrorRating(true)
+          }
+        })
+    } else {
+      console.log("Login first");
+    }
   }
+
   const ratingChanged = (newRating) => {
     setScore(newRating)
   }
@@ -51,7 +55,6 @@ export default function SingleProduct(props) {
         console.log(total)
         setProductOne(oneProduct)
       })
-
   }, [])
 
   return (

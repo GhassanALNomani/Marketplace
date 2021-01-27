@@ -35,6 +35,7 @@ export const Home = (props) => {
                         <Card.Img variant="top" src={ele.image} />
                         <Card.Body>
                             <Card.Title>{ele.name}</Card.Title>
+                            <Card.Text>{ele.description}</Card.Text>
                             <Card.Text>{ele.features}</Card.Text>
                             {props.isLoggedIn ? (<Button style={{ backgroundColor: "black" , margin :"10px"}} onClick={() => handleAddToCart(ele._id)} as={Link} variant="primary" to={`/${props.user._id}/${ele._id}`}>
                                 Add to Cart

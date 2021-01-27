@@ -92,7 +92,10 @@ export default function SingleProduct(props) {
                   onChange={ratingChanged}
                   size={24}
                   color2={'#ffd700'} />
-                  <Button style={{ backgroundColor: "black" , margin :"10px"}} size="md" onClick={handleRating}>Review</Button>
+
+                  {props.user &&  (<Button style={{ backgroundColor: "black" , margin :"10px"}} size="md" onClick={handleRating} >Review
+                   </Button>)}
+
                 </Card.Body>
               </Card>
           </div>}

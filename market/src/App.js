@@ -21,13 +21,14 @@ import axios from "axios";
 import Platforms from "./components/pages/Platforms";
 
 import SingleProduct from "./components/pages/SingleProduct";
-
+import Cart from "./components/pages/Cart";
 import {EditPro} from "./components/pages/EditPro";
 function App() {
   //state
 
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [product, setProduct] = useState([]);
+  const [loadingData, setLoadingData] = useState(false);
 
   // call products
   useEffect(() => {
@@ -35,6 +36,7 @@ function App() {
       .get("http://localhost:5000/api/product")
       .then((response) => {
         setProduct(response.data.result);
+        setLoadingData(true)
         console.log("product", product);
       })
       .catch((err) => console.log(err));
@@ -61,7 +63,7 @@ function App() {
     <>
       <Router>
         <Header />
-        <Nave isLoggedIn={auth.isLoggedIn} loginCallback={userLogin} />
+        <Nave isLoggedIn={auth.isLoggedIn} user={auth.currentUser} loginCallback={userLogin} />
         <Switch>
           <Route path="/profile">
             <AuthRoute
@@ -85,7 +87,9 @@ function App() {
           </Route>
 
           <Route exact path="/">
-            <Home product={product} />
+            <Home product={product}
+            user={auth.currentUser}
+            isLoggedIn={auth.isLoggedIn} />
           </Route>
           <Route path="/product/:id">
               <SingleProduct user={auth.currentUser}/>
@@ -111,9 +115,8 @@ function App() {
           </Route>
           
 
-
-          <Route exact path="/edit/:productId">
-            <EditPro user={auth.currentUser} />
+          <Route path={`/:userId`}>
+            <Cart user={auth.currentUser} />
           </Route>
 
 
